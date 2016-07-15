@@ -15,7 +15,8 @@ namespace VirtoCommerce.Storefront.Model.Order
             TaxDetails = new List<TaxDetail>();
             DynamicProperties = new List<DynamicProperty>();
         }
-
+        public string newbalance { get; set; }
+        public string Balance { get; set; }
         /// <summary>
         /// Price where tax and discount are not applied
         /// </summary>

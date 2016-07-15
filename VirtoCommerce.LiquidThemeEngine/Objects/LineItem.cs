@@ -13,6 +13,11 @@ namespace VirtoCommerce.LiquidThemeEngine.Objects
     [DataContract]
     public class LineItem : Drop
     {
+        [DataMember]
+        public string newbalance { get; set; }
+
+        [DataMember]
+        public string Balance { get; set; }
         /// <summary>
         /// Gets line item fulfillment info
         /// </summary>

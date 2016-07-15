@@ -8,6 +8,7 @@
             <th>{{ 'customer.order.price' | t }}</th>
             <th class="text-center">{{ 'customer.order.quantity' | t }}</th>
             <th class="text-right">{{ 'customer.order.total' | t }}</th>
+          <th>{{  'customer.order.Balance'| t }}</th>
         </tr>
     </thead>
     <tbody>
@@ -30,10 +31,12 @@
                 <td>{{ line_item.price_with_tax | money }}</td>
                 <td class="text-center">{{ line_item.quantity }}</td>
                 <td class="text-right">{{ line_item.line_price_with_tax | money }}</td>
+          <td class="text-right">{{ line_item.Balance }}</td>
             {% else %}
                 <td>{{ line_item.price | money }}</td>
                 <td class="text-center">{{ line_item.quantity }}</td>
                 <td class="text-right">{{ line_item.line_price | money }}</td>
+          <td class="text-right">{{ line_item.Balance }}</td>
             {% endif %}            
         </tr>
         {% endfor %}

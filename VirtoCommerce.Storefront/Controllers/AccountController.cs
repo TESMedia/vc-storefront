@@ -155,8 +155,17 @@ namespace VirtoCommerce.Storefront.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        public async Task<ActionResult> Register(Register formModel)
+        public async Task<ActionResult> Register(string Email, string Password, string FirstName, string LastName, Register formModel)
         {
+            if (Email != null && Password != null && FirstName != null && LastName != null)
+            {
+                formModel = new Register();
+                formModel.Email = Email;
+                formModel.Password = Password;
+                formModel.FirstName = FirstName;
+                formModel.LastName = LastName;
+            }
+
             var user = new coreModel.ApplicationUserExtended
             {
                 Email = formModel.Email,
@@ -218,8 +227,17 @@ namespace VirtoCommerce.Storefront.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        public async Task<ActionResult> Login(Login formModel, string returnUrl)
+        public async Task<ActionResult> Login(string Email, string Password, Login formModel, string returnUrl)
         {
+            if (Email != null && Password != null)
+            {
+                formModel = new Login();
+                formModel.Email = Email;
+                formModel.Password = Password;
+                formModel.UsernamesEnabled = false;
+                formModel.Username = null;
+                formModel.RememberMe = false;
+            }
             var loginResult = await _commerceCoreApi.StorefrontSecurityPasswordSignInAsync(formModel.Email, formModel.Password);
 
             if (string.Equals(loginResult.Status, "success", StringComparison.InvariantCultureIgnoreCase))

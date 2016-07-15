@@ -307,7 +307,8 @@
             "price": "Price",
             "quantity": "Quantity",
             "total": "Total",
-            "fulfilled_on": "Fulfilled on {{ date }}",
+          "fulfilled_on": "Fulfilled on {{ date }}",
+          "Balance": "Balance",
             "subtotal": "Subtotal"
         },
         "quotes": {

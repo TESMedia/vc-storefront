@@ -184,6 +184,7 @@
       "quantity": "Quantidade",
       "total": "Total",
       "fulfilled_on": "Processado em {{ date }}",
+       "Balance": "Balance",
       "subtotal": "Subtotal"
     },
     "recover_password": {

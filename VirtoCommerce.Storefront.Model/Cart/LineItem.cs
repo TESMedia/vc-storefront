@@ -27,7 +27,7 @@ namespace VirtoCommerce.Storefront.Model.Cart
             ValidationErrors = new List<ValidationError>();
             ValidationWarnings = new List<ValidationError>();
         }
-
+        public string Balance { get; set; }
         /// <summary>
         /// Gets or sets line item created date
         /// </summary>
