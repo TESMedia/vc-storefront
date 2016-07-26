@@ -53,7 +53,7 @@ namespace VirtoCommerce.LiquidThemeEngine.Converters
         public static string Returnbalance()
         {
             HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri("http://tls.tes.media/");
+            client.BaseAddress = new Uri("http://tlsnewapp.azurewebsites.net/");
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             HttpResponseMessage response = client.GetAsync("api/TLSMobileAuthentication/ShowPoint?Email=" + GetUserName()).Result;

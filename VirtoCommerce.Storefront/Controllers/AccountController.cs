@@ -55,11 +55,11 @@ namespace VirtoCommerce.Storefront.Controllers
             return View("customers/account", WorkContext);
         }
 
-
         //POST: /account
         [HttpPost]
         public async Task<ActionResult> UpdateAccount(CustomerInfo customer)
         {
+            
             customer.Id = WorkContext.CurrentCustomer.Id;
 
             var fullName = string.Join(" ", customer.FirstName, customer.LastName).Trim();
@@ -235,9 +235,13 @@ namespace VirtoCommerce.Storefront.Controllers
                 formModel.Email = Email;
                 formModel.Password = Password;
                 formModel.UsernamesEnabled = false;
-                formModel.Username = null;
+                formModel.Username = Email;
                 formModel.RememberMe = false;
+                
+
+
             }
+           
             var loginResult = await _commerceCoreApi.StorefrontSecurityPasswordSignInAsync(formModel.Email, formModel.Password);
 
             if (string.Equals(loginResult.Status, "success", StringComparison.InvariantCultureIgnoreCase))
@@ -273,7 +277,8 @@ namespace VirtoCommerce.Storefront.Controllers
 
                     //Publish user login event 
                     await _userLoginEventPublisher.PublishAsync(new UserLoginEvent(WorkContext, WorkContext.CurrentCustomer, customer));
-                    return StoreFrontRedirect(returnUrl);
+                    var url= StoreFrontRedirect(returnUrl);
+                    return url;
                 }
                 else
                 {
@@ -293,10 +298,10 @@ namespace VirtoCommerce.Storefront.Controllers
             }
 
             ModelState.AddModelError("form", "Login attempt failed.");
+
             return View("customers/login", WorkContext);
-
-        }
-
+           
+}
         [HttpGet]
         [AllowAnonymous]
         public ActionResult ExternalLogin(string authType, string returnUrl)
